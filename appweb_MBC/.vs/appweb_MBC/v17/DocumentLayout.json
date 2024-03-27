@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Alumno\\Desktop\\web1\\appweb_MBC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0739093F-DCE0-4CD0-9AFD-EDA5C7BE2B65}|appweb_MBC\\appweb_MBC.csproj|c:\\users\\alumno\\desktop\\web1\\appweb_mbc\\appweb_mbc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0739093F-DCE0-4CD0-9AFD-EDA5C7BE2B65}|appweb_MBC\\appweb_MBC.csproj|solutionrelative:appweb_mbc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0739093F-DCE0-4CD0-9AFD-EDA5C7BE2B65}|appweb_MBC\\appweb_MBC.csproj|c:\\users\\alumno\\desktop\\web1\\appweb_mbc\\appweb_mbc\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{0739093F-DCE0-4CD0-9AFD-EDA5C7BE2B65}|appweb_MBC\\appweb_MBC.csproj|C:\\Users\\Alumno\\Desktop\\web1\\appweb_MBC\\appweb_mbc\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{0739093F-DCE0-4CD0-9AFD-EDA5C7BE2B65}|appweb_MBC\\appweb_MBC.csproj|solutionrelative:appweb_mbc\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0739093F-DCE0-4CD0-9AFD-EDA5C7BE2B65}|appweb_MBC\\appweb_MBC.csproj|C:\\Users\\Alumno\\Desktop\\web1\\appweb_MBC\\appweb_mbc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0739093F-DCE0-4CD0-9AFD-EDA5C7BE2B65}|appweb_MBC\\appweb_MBC.csproj|solutionrelative:appweb_mbc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{0739093F-DCE0-4CD0-9AFD-EDA5C7BE2B65}|appweb_MBC\\appweb_MBC.csproj|C:\\Users\\Alumno\\Desktop\\web1\\appweb_MBC\\appweb_mbc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0739093F-DCE0-4CD0-9AFD-EDA5C7BE2B65}|appweb_MBC\\appweb_MBC.csproj|solutionrelative:appweb_mbc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,39 +30,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Alumno\\Desktop\\web1\\appweb_MBC\\appweb_MBC\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "appweb_MBC\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Alumno\\Desktop\\web1\\appweb_MBC\\appweb_MBC\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "appweb_MBC\\Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAACoAAAAAAAAAAAAAADYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-27T14:54:55.5Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Privacy.cshtml",
               "DocumentMoniker": "C:\\Users\\Alumno\\Desktop\\web1\\appweb_MBC\\appweb_MBC\\Views\\Home\\Privacy.cshtml",
               "RelativeDocumentMoniker": "appweb_MBC\\Views\\Home\\Privacy.cshtml",
               "ToolTip": "C:\\Users\\Alumno\\Desktop\\web1\\appweb_MBC\\appweb_MBC\\Views\\Home\\Privacy.cshtml",
               "RelativeToolTip": "appweb_MBC\\Views\\Home\\Privacy.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAhAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-03-27T17:21:30.928Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\Alumno\\Desktop\\web1\\appweb_MBC\\appweb_MBC\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "appweb_MBC\\Controllers\\HomeController.cs",
               "ToolTip": "C:\\Users\\Alumno\\Desktop\\web1\\appweb_MBC\\appweb_MBC\\Controllers\\HomeController.cs",
               "RelativeToolTip": "appweb_MBC\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAAFcAAAAAAAAAAAAUwGUAAAAjAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-27T14:50:04.289Z",
               "EditorCaption": ""
@@ -74,20 +57,6 @@
           ]
         }
       ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "e2525ce2-c2ca-46bc-8859-1a2c1f653ba1",
-        "Display": 0,
-        "X": 273,
-        "Y": 237,
-        "Width": 1357,
-        "Height": 784,
-        "WindowState": 0
-      },
-      "DocumentGroups": []
     }
   ]
 }

@@ -24,7 +24,16 @@
                 <td>@row["Apellido"]</td>
                 <td>@row["Departamento"]</td>
                 <td>
-                    <a href="#" class="btn btn-success">Ver</a>
+                    <a href="#" class="btn btn-success ver-detalles"
+                       data-nombre="@row["Nombre"]"
+                       data-apellido="@row["Apellido"]"
+                       data-edad="@row["Edad"]"
+                       data-genero="@row["Genero"]"
+                       data-correo="@row["Correo_Electronico"]"
+                       data-cargo="@row["Cargo"]"
+                       data-salario="@row["Salario"]"
+                       data-toggle="modal"
+                       data-target="#detalleEmpleadoModal">Ver</a>
                     <a href="#" class="btn btn-primary">Modificar</a>
                     <a href="#" class="btn btn-danger">Eliminar</a>
                 </td>
@@ -32,3 +41,50 @@
         }
     </tbody>
 </table>
+
+<!-- Modal para mostrar los detalles del empleado -->
+<div class="modal fade" id="detalleEmpleadoModal" tabindex="-1" role="dialog" aria-labelledby="detalleEmpleadoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detalleEmpleadoModalLabel">Detalles del Empleado</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Nombre:</strong> <span id="detalleNombre"></span></p>
+                <p><strong>Apellido:</strong> <span id="detalleApellido"></span></p>
+                <p><strong>Edad:</strong> <span id="detalleEdad"></span></p>
+                <p><strong>Género:</strong> <span id="detalleGenero"></span></p>
+                <p><strong>Correo Electrónico:</strong> <span id="detalleCorreo"></span></p>
+                <p><strong>Cargo:</strong> <span id="detalleCargo"></span></p>
+                <p><strong>Salario:</strong> <span id="detalleSalario"></span></p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Script JavaScript para cargar los detalles del empleado en el modal -->
+<script>
+    $(document).ready(function () {
+        $('.ver-detalles').click(function () {
+            var nombre = $(this).data('nombre');
+            var apellido = $(this).data('apellido');
+            var edad = $(this).data('edad');
+            var genero = $(this).data('genero');
+            var correo = $(this).data('correo');
+            var cargo = $(this).data('cargo');
+            var salario = $(this).data('salario');
+            $('#detalleNombre').text(nombre);
+            $('#detalleApellido').text(apellido);
+            $('#detalleEdad').text(edad);
+            $('#detalleGenero').text(genero);
+            $('#detalleCorreo').text(correo);
+            $('#detalleCargo').text(cargo);
+            $('#detalleSalario').text(salario);
+        });
+    });
+</script>

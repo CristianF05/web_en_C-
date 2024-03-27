@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Text.Json;
 
 namespace appweb_MBC.Controllers
 {
@@ -105,7 +106,8 @@ namespace appweb_MBC.Controllers
         public IActionResult Empleados()
         {
             DataTable empleados = ObtenerEmpleadosDesdeBD();
-            return View(empleados);
+            string jsonEmpleados = JsonSerializer.Serialize(empleados);
+            return Content(jsonEmpleados, "application/json");
         }
 
         private DataTable ObtenerEmpleadosDesdeBD()
@@ -113,7 +115,7 @@ namespace appweb_MBC.Controllers
             DataTable empleados = new DataTable();
 
             string connectionString = "Server=(localdb)\\senati;Database=web;Integrated Security=true;";
-            string query = "SELECT Nombre, Apellido, Departamento FROM Empleado";
+            string query = "SELECT * FROM Empleado"; // Seleccionar todos los campos de la tabla Empleado
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
