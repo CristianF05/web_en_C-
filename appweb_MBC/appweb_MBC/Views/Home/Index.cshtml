@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Agregar Empleado";
+}
+
+<h2>Agregar Empleado</h2>
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.Message
+    </div>
+}
+
+<form method="post">
+    <div>
+        <label for="Nombre">Nombre:</label>
+        <input type="text" id="Nombre" name="Nombre" class="form-control" />
+    </div>
+    <div>
+        <label for="Apellido">Apellido:</label>
+        <input type="text" id="Apellido" name="Apellido" class="form-control" />
+    </div>
+    <div>
+        <label for="Edad">Edad:</label>
+        <input type="number" id="Edad" name="Edad" class="form-control" />
+    </div>
+    <div>
+        <label for="Genero">Género:</label>
+        <select id="Genero" name="Genero" class="form-control">
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+        </select>
+    </div>
+    <div>
+        <label for="Correo_Electronico">Correo Electrónico:</label>
+        <input type="email" id="Correo_Electronico" name="Correo_Electronico" class="form-control" />
+    </div>
+    <div>
+        <label for="Departamento">Departamento:</label>
+        <input type="text" id="Departamento" name="Departamento" class="form-control" />
+    </div>
+    <div>
+        <label for="Cargo">Cargo:</label>
+        <input type="text" id="Cargo" name="Cargo" class="form-control" />
+    </div>
+    <div>
+        <label for="Salario">Salario:</label>
+        <div class="input-group">
+            <span class="input-group-text">S/</span>
+            <input type="number" id="Salario" name="Salario" class="form-control" />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
