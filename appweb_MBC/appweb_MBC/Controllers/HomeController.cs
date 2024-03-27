@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using appweb_MBC.Models;
-using System.Diagnostics;
 using System;
+using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace appweb_MBC.Controllers
 {
@@ -16,11 +17,6 @@ namespace appweb_MBC.Controllers
         }
 
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
         {
             return View();
         }
@@ -95,11 +91,42 @@ namespace appweb_MBC.Controllers
             }
             catch (Exception ex)
             {
-
-
                 ModelState.AddModelError(string.Empty, "Se produjo un error al procesar la solicitud: " + ex.Message);
                 return View("Index");
             }
+        }
+
+        public IActionResult Privacy()
+        {
+            DataTable empleados = ObtenerEmpleadosDesdeBD();
+            return View(empleados);
+        }
+
+        public IActionResult Empleados()
+        {
+            DataTable empleados = ObtenerEmpleadosDesdeBD();
+            return View(empleados);
+        }
+
+        private DataTable ObtenerEmpleadosDesdeBD()
+        {
+            DataTable empleados = new DataTable();
+
+            string connectionString = "Server=(localdb)\\senati;Database=web;Integrated Security=true;";
+            string query = "SELECT Nombre, Apellido, Departamento FROM Empleado";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                {
+                    adapter.Fill(empleados);
+                }
+            }
+
+            return empleados;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
