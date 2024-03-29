@@ -98,7 +98,7 @@ namespace appweb_MBC.Controllers
         }
 
         [HttpPost]
-        public IActionResult Privacy(string nombre, string apellido, int edad, string genero, string correo, string cargo, decimal salario)
+        public IActionResult UpdateEmployee(string nombre, string apellido, int edad, string genero, string correo, string cargo, decimal salario)
         {
             try
             {
@@ -188,5 +188,55 @@ namespace appweb_MBC.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpPost]
+        public IActionResult Privacy(string correo)
+        {
+            try
+            {
+                // Establecer la cadena de conexión a la base de datos
+                string connectionString = "Server=DESKTOP-HONFTB2;Database=web;Integrated Security=true;";
+
+                // Definir la consulta SQL para eliminar al empleado por su correo electrónico
+                string query = @"DELETE FROM Empleado WHERE Correo_Electronico = @Correo";
+
+                // Crear y abrir la conexión a la base de datos
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Crear el comando SQL con la consulta y la conexión
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        // Asignar el parámetro Correo_Electronico a la consulta SQL
+                        command.Parameters.AddWithValue("@Correo", correo);
+
+                        // Ejecutar la consulta SQL para eliminar al empleado
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        // Verificar si se eliminó correctamente al empleado
+                        if (rowsAffected > 0)
+                        {
+                            ViewBag.Message = "Empleado eliminado correctamente.";
+                        }
+                        else
+                        {
+                            ViewBag.Message = "No se encontró al empleado con el correo proporcionado.";
+                        }
+                    }
+                }
+
+                // Redirigir a la acción que muestra la lista de empleados actualizada
+                return RedirectToAction("Privacy");
+            }
+            catch (Exception ex)
+            {
+                // Manejar el error si ocurre algún problema al eliminar al empleado
+                ModelState.AddModelError(string.Empty, "Se produjo un error al eliminar al empleado: " + ex.Message);
+                return RedirectToAction("Privacy");
+            }
+        }
+
+
     }
 }

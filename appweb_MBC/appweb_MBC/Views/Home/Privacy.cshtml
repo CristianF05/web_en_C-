@@ -42,7 +42,8 @@
                        data-correo="@row["Correo_Electronico"]"
                        data-cargo="@row["Cargo"]"
                        data-salario="@row["Salario"]">Modificar</a>
-                    <a href="#" class="btn btn-danger">Eliminar</a>
+                    <a href="#" class="btn btn-danger eliminar-empleado"
+                       data-correo="@row["Correo_Electronico"]">Eliminar</a>
                 </td>
             </tr>
         }
@@ -177,7 +178,7 @@
 
                 // Realizar una solicitud AJAX para enviar los datos actualizados al servidor
                 $.ajax({
-                    url: '/Home/Privacy', // Corregir la URL para que apunte a la acción Privacy en el controlador HomeController
+                    url: '/Home/UpdateEmployee', // Cambiar la URL para que apunte a la acción UpdateEmployee en el controlador HomeController
                     method: 'POST',
                     data: {
                         nombre: nombre,
@@ -199,6 +200,29 @@
                         console.error(xhr.responseText);
                     }
                 });
+            });
+
+            $('.eliminar-empleado').click(function () {
+                if (confirm('¿Estás seguro de eliminar este empleado?')) {
+                    var correo = $(this).data('correo'); // Obtener el correo del atributo de datos
+                    $.ajax({
+                        url: '/Home/Privacy', // Cambiar la URL para que apunte a la acción Privacy en el controlador HomeController
+                        method: 'POST',
+                        data: {
+                            correo: correo // Envía el correo del empleado en lugar del EmpleadoID
+                        },
+                        success: function (response) {
+                            // Manejar la respuesta del servidor si es necesario
+                            console.log(response);
+                            // Actualizar la interfaz de usuario si es necesario
+                            location.reload(); // Recargar la página para ver los cambios actualizados
+                        },
+                        error: function (xhr, status, error) {
+                            // Manejar errores de la solicitud AJAX si es necesario
+                            console.error(xhr.responseText);
+                        }
+                    });
+                }
             });
         });
     });
