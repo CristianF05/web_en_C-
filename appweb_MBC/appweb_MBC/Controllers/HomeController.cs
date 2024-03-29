@@ -49,7 +49,7 @@ namespace appweb_MBC.Controllers
                 }
 
                 // Establecer la cadena de conexión a la base de datos
-                string connectionString = "Server=(localdb)\\senati;Database=web;Integrated Security=true;";
+                string connectionString = "Server=DESKTOP-HONFTB2;Database=web;Integrated Security=true;";
 
                 // Definir la consulta SQL para insertar el empleado
                 string query = @"INSERT INTO Empleado (Nombre, Apellido, Edad, Genero, Correo_Electronico, Departamento, Cargo, Salario) 
@@ -97,6 +97,58 @@ namespace appweb_MBC.Controllers
             }
         }
 
+        [HttpPost]
+        public IActionResult Privacy(string nombre, string apellido, int edad, string genero, string correo, string cargo, decimal salario)
+        {
+            try
+            {
+                // Establecer la cadena de conexión a la base de datos
+                string connectionString = "Server=DESKTOP-HONFTB2;Database=web;Integrated Security=true;";
+
+                // Definir la consulta SQL para actualizar el empleado
+                string query = @"UPDATE Empleado SET Nombre = @Nombre, Apellido = @Apellido, Edad = @Edad, Genero = @Genero, Correo_Electronico = @Correo, Cargo = @Cargo, Salario = @Salario WHERE Correo_Electronico = @Correo";
+
+                // Crear y abrir la conexión a la base de datos
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Crear el comando SQL con la consulta y la conexión
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        // Asignar los parámetros a la consulta SQL
+                        command.Parameters.AddWithValue("@Nombre", nombre);
+                        command.Parameters.AddWithValue("@Apellido", apellido);
+                        command.Parameters.AddWithValue("@Edad", edad);
+                        command.Parameters.AddWithValue("@Genero", genero);
+                        command.Parameters.AddWithValue("@Correo", correo);
+                        command.Parameters.AddWithValue("@Cargo", cargo);
+                        command.Parameters.AddWithValue("@Salario", salario);
+
+                        // Ejecutar la consulta SQL para actualizar el empleado
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        // Verificar si se actualizó correctamente el empleado
+                        if (rowsAffected > 0)
+                        {
+                            ViewBag.Message = "Empleado actualizado correctamente.";
+                        }
+                        else
+                        {
+                            ViewBag.Message = "Error al actualizar el empleado.";
+                        }
+                    }
+                }
+
+                return RedirectToAction("Privacy");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, "Se produjo un error al procesar la solicitud: " + ex.Message);
+                return RedirectToAction("Privacy");
+            }
+        }
+
         public IActionResult Privacy()
         {
             DataTable empleados = ObtenerEmpleadosDesdeBD();
@@ -114,7 +166,7 @@ namespace appweb_MBC.Controllers
         {
             DataTable empleados = new DataTable();
 
-            string connectionString = "Server=(localdb)\\senati;Database=web;Integrated Security=true;";
+            string connectionString = "Server=DESKTOP-HONFTB2;Database=web;Integrated Security=true;";
             string query = "SELECT * FROM Empleado"; // Seleccionar todos los campos de la tabla Empleado
 
             using (SqlConnection connection = new SqlConnection(connectionString))

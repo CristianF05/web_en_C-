@@ -34,7 +34,14 @@
                        data-salario="@row["Salario"]"
                        data-toggle="modal"
                        data-target="#detalleEmpleadoModal">Ver</a>
-                    <a href="#" class="btn btn-primary">Modificar</a>
+                    <a href="#" class="btn btn-primary editar-empleado"
+                       data-nombre="@row["Nombre"]"
+                       data-apellido="@row["Apellido"]"
+                       data-edad="@row["Edad"]"
+                       data-genero="@row["Genero"]"
+                       data-correo="@row["Correo_Electronico"]"
+                       data-cargo="@row["Cargo"]"
+                       data-salario="@row["Salario"]">Modificar</a>
                     <a href="#" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
@@ -64,6 +71,54 @@
         </div>
     </div>
 </div>
+
+<!-- Modal para editar el empleado -->
+<div class="modal fade" id="editarEmpleadoModal" tabindex="-1" role="dialog" aria-labelledby="editarEmpleadoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editarEmpleadoModalLabel">Editar Empleado</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formularioEditar" method="post">
+                    <div class="form-group">
+                        <label for="editNombre">Nombre:</label>
+                        <input type="text" class="form-control" id="editNombre" name="editNombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="editApellido">Apellido:</label>
+                        <input type="text" class="form-control" id="editApellido" name="editApellido">
+                    </div>
+                    <div class="form-group">
+                        <label for="editEdad">Edad:</label>
+                        <input type="text" class="form-control" id="editEdad" name="editEdad">
+                    </div>
+                    <div class="form-group">
+                        <label for="editGenero">Género:</label>
+                        <input type="text" class="form-control" id="editGenero" name="editGenero">
+                    </div>
+                    <div class="form-group">
+                        <label for="editCorreo">Correo Electrónico:</label>
+                        <input type="email" class="form-control" id="editCorreo" name="editCorreo">
+                    </div>
+                    <div class="form-group">
+                        <label for="editCargo">Cargo:</label>
+                        <input type="text" class="form-control" id="editCargo" name="editCargo">
+                    </div>
+                    <div class="form-group">
+                        <label for="editSalario">Salario:</label>
+                        <input type="text" class="form-control" id="editSalario" name="editSalario">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
@@ -85,6 +140,66 @@
             $('#detalleCorreo').text(correo);
             $('#detalleCargo').text(cargo);
             $('#detalleSalario').text(salario);
+        });
+
+        $(document).ready(function () {
+            $('.editar-empleado').one('click', function () {
+                var nombre = $(this).data('nombre');
+                var apellido = $(this).data('apellido');
+                var edad = $(this).data('edad');
+                var genero = $(this).data('genero');
+                var correo = $(this).data('correo');
+                var cargo = $(this).data('cargo');
+                var salario = $(this).data('salario');
+                $('#editNombre').val(nombre);
+                $('#editApellido').val(apellido);
+                $('#editEdad').val(edad);
+                $('#editGenero').val(genero);
+                $('#editCorreo').val(correo);
+                $('#editCargo').val(cargo);
+                $('#editSalario').val(salario);
+                $('#editarEmpleadoModal').modal('show');
+            });
+
+            // Escuchar el envío del formulario de edición
+            $('#formularioEditar').submit(function (event) {
+                // Prevenir el comportamiento predeterminado del formulario
+                event.preventDefault();
+
+                // Obtener los datos del formulario
+                var nombre = $('#editNombre').val();
+                var apellido = $('#editApellido').val();
+                var edad = $('#editEdad').val();
+                var genero = $('#editGenero').val();
+                var correo = $('#editCorreo').val();
+                var cargo = $('#editCargo').val();
+                var salario = $('#editSalario').val();
+
+                // Realizar una solicitud AJAX para enviar los datos actualizados al servidor
+                $.ajax({
+                    url: '/Home/Privacy', // Corregir la URL para que apunte a la acción Privacy en el controlador HomeController
+                    method: 'POST',
+                    data: {
+                        nombre: nombre,
+                        apellido: apellido,
+                        edad: edad,
+                        genero: genero,
+                        correo: correo,
+                        cargo: cargo,
+                        salario: salario
+                    },
+                    success: function (response) {
+                        // Manejar la respuesta del servidor si es necesario
+                        console.log(response);
+                        // Actualizar la interfaz de usuario si es necesario
+                        location.reload(); // Recargar la página para ver los cambios actualizados
+                    },
+                    error: function (xhr, status, error) {
+                        // Manejar errores de la solicitud AJAX si es necesario
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
         });
     });
 </script>
